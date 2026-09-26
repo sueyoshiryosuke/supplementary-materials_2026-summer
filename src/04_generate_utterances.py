@@ -70,7 +70,7 @@ SYSTEM_PROMPT_TEMPLATE = """あなたは人狼ゲームのプレイヤーとし�
 # ---------------------------------------------------------------------------
 
 def load_evaluation_contexts(path: Path) -> List[Dict[str, Any]]:
-    """evaluation_contexts_fixed.json を読み込む。"""
+    """evaluation_contexts.json を読み込む。"""
     if not path.exists():
         raise FileNotFoundError(f"評価局面ファイルが見つかりません: {path}")
     with open(path, "r", encoding="utf-8") as f:
@@ -470,7 +470,7 @@ def generate_all_utterances(
 def main_cli() -> None:
     """CLIエントリポイント"""
     config = main.load_config("config.yml")
-    contexts_file = main.resolve_path("results/evaluation_contexts_fixed.json")
+    contexts_file = main.resolve_path("results/evaluation_contexts.json")
     mbti_file = main.resolve_path("results/mbti_like_characters.json")
     default_5_file = main.resolve_path("src/default_5.yml")
     output_file = main.resolve_path("results/generated_utterances.json")
